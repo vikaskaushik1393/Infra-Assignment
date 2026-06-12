@@ -28,5 +28,27 @@ resource "azurerm_network_security_group" "vikas-nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+  security_rule {
+  name                       = "AllowICMP"
+  priority                   = 120
+  direction                  = "Inbound"
+  access                     = "Allow"
+  protocol                   = "Icmp"
+  source_port_range          = "*"
+  destination_port_range     = "*"
+  source_address_prefix      = "*"
+  destination_address_prefix = "*"
+}
+security_rule {
+  name                       = "AllowICMPoutbound"
+  priority                   = 130
+  direction                  = "Outbound"
+  access                     = "Allow"
+  protocol                   = "Icmp"
+  source_port_range          = "*"
+  destination_port_range     = "*"
+  source_address_prefix      = "*"
+  destination_address_prefix = "*"
+}
   
 }
