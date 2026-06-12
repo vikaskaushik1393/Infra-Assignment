@@ -1,7 +1,7 @@
 RG-Vikas = {
     RG1 = {
         name = "Vikas-RG"
-        location = "eastus"
+        location = "Central US"
         managed_by = "Terraform"
     }
 }
