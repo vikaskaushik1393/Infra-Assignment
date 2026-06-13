@@ -11,25 +11,33 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                bat 'C:\\Terraform\\terraform.exe init'
+                dir('azurerm_network_interface') {
+                    bat 'C:\\Terraform\\terraform.exe init'
+                }
             }
         }
 
         stage('Terraform Validate') {
             steps {
-                bat 'C:\\Terraform\\terraform.exe validate'
+                dir('azurerm_network_interface') {
+                    bat 'C:\\Terraform\\terraform.exe validate'
+                }
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                bat 'C:\\Terraform\\terraform.exe plan'
+                dir('azurerm_network_interface') {
+                    bat 'C:\\Terraform\\terraform.exe plan'
+                }
             }
         }
 
         stage('Terraform Apply') {
             steps {
-                bat 'C:\\Terraform\\terraform.exe apply --auto-approve'
+                dir('azurerm_network_interface') {
+                    bat 'C:\\Terraform\\terraform.exe apply --auto-approve'
+                }
             }
         }
     }
