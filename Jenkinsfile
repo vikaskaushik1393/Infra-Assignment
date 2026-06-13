@@ -1,26 +1,19 @@
 pipeline {
     agent any
 
-    stages {
+    environment {
+        ARM_CLIENT_ID       = credentials('azure-client-id')
+        ARM_CLIENT_SECRET   = credentials('azure-client-secret')
+        ARM_TENANT_ID       = credentials('azure-tenant-id')
+        ARM_SUBSCRIPTION_ID = credentials('azure-subscription-id')
+    }
 
-        stage('Terraform Version') {
-            steps {
-                bat 'C:\\Terraform\\terraform.exe --version'
-            }
-        }
+    stages {
 
         stage('Terraform Init') {
             steps {
                 dir('azurerm_network_interface') {
                     bat 'C:\\Terraform\\terraform.exe init'
-                }
-            }
-        }
-
-        stage('Terraform Validate') {
-            steps {
-                dir('azurerm_network_interface') {
-                    bat 'C:\\Terraform\\terraform.exe validate'
                 }
             }
         }
